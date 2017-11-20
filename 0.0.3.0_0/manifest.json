@@ -1,0 +1,51 @@
+{
+   "background": {
+      "scripts": [ "js/background.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "19": "icon.png",
+         "38": "icon.png"
+      },
+      "default_title": "Chrome Recorder"
+   },
+   "commands": {
+      "cursor": {
+         "description": "View/hide cursor position",
+         "suggested_key": {
+            "default": "Alt+Shift+V"
+         }
+      },
+      "screenshot": {
+         "description": "Capture screenshot",
+         "suggested_key": {
+            "default": "Alt+Shift+C"
+         }
+      },
+      "wait": {
+         "description": "Get wait for element",
+         "suggested_key": {
+            "default": "Alt+Shift+W"
+         }
+      }
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "js/front.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_end"
+   } ],
+   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+   "description": "Record the user interactions, take screenshots and replay the actions. Also can mock XHR calls with a HAR file",
+   "icons": {
+      "128": "icon.png",
+      "16": "icon.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhlKz4EVqWOFSoORIJ3O5wxcLKfEF9IqCaWdFbzGnDsw821hEhbPrz5Errw/5TIi7UsP6CX8euDUOH7e8gdWIf+Uiw5ddEABpNbJ6+sUbtDhXw7Izw39DCvECFMZtsO/ux8mR+SrjJGttzQr+GadzaA/KyeKXmZB9dhwR2xzYh4324yh1da8Iag1Cqx+o6TF1wxZsRtfyT/+nfmh7cdrTk18h7kg5iZHAa3X0NJfikcktwgbTVN76JqiOWA2KXsJEsLGthPim8iZXLbr4LtZvcy0vCHmEL5t5+rtdeJQMYiRHeSVb/Pig2MXbCOZfq+h6lnLDj/2DLGbjJ6d+PCLqrQIDAQAB",
+   "manifest_version": 2,
+   "name": "Chrome Recorder",
+   "permissions": [ "tabs", "webRequest", "webRequestBlocking", "\u003Call_urls>" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.0.3.0",
+   "web_accessible_resources": [ "js/front.js.map", "js/front.ts" ]
+}
